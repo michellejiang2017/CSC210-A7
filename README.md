@@ -16,6 +16,10 @@ If anyone was particularly helpful, please give them a shout-out here:
 
 Any references or resources used besides JavaDoc and course materials:
 
+https://stackoverflow.com/questions/196830/what-is-the-easiest-best-most-correct-way-to-iterate-through-the-characters-of-a
+
+https://www.w3schools.com/java/java_type_casting.asp
+
 If you used generative AI, how did you use it? What role did it play in your learning?
 
 ## Questions to Answer
