@@ -1,3 +1,8 @@
+/** 
+ * FileName: DecisionTree.java 
+ * Author: Michelle Jiang 
+ * Class that implements a decision tree. 
+ */
 public class DecisionTree extends BinaryTree<String> { 
 
     /**
