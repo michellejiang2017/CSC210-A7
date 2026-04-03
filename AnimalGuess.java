@@ -7,18 +7,55 @@ import java.util.Scanner;
  */
 public class AnimalGuess { 
 
+    public static DecisionTree defaultTree() { 
+        // Leaves (animals)
+        DecisionTree dog = new DecisionTree("Dog");
+        DecisionTree mouse = new DecisionTree("Mouse");
+        DecisionTree crocodile = new DecisionTree("Crocodile");
+
+        // Intermediate node
+        DecisionTree cat = new DecisionTree("Cat", mouse, null);
+
+        // Question node
+        DecisionTree bark = new DecisionTree("Does it bark?", dog, cat);
+
+        // Root
+        DecisionTree root = new DecisionTree("Is it a mammal?", bark, crocodile);
+        
+        return root; 
+    }
+
     public static void main(String[] args) {
         // Initialize scanner 
         Scanner scanner = new Scanner(System.in);
+        
+        DecisionTree root = defaultTree(); 
 
-        // Main shopping loop
-        boolean shopping = true;  
-        while (shopping) {
-            System.out.print("\nEnter your choice: ");
-            String input = scanner.nextLine().trim();
-            String[] parts = input.split(" ", 2);
-            String command = parts[0].toLowerCase();
+        // Main loop
+        boolean running = true;  
+        System.out.println("Welcome to the Animal Guessing Game!");
+        while (running) {
+            DecisionTree current = root; 
 
+            while (!current.isLeaf()) { 
+                //System.out.println(question);
+                System.out.println("Y/N:");
+                if (scanner.next() == "Y") { 
+                    current.getLeft();
+                } else if (scanner.next() == "N") { 
+                    current.getRight();
+                } else { 
+                    //throw exception?
+                }
+            }
+            
+            System.out.println("Is your animal a " + current.toString() + "? ");
+            if (scanner.next() == "Y") {
+                System.out.println("Yay! I guessed right!");
+            } else if (scanner.next() == "N") { 
+                System.out.println("");
+            } //bro im too tired for this
+            
             //try {
             //    switch (command) {
             //        case "move":
