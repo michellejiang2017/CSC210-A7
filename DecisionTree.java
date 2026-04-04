@@ -3,6 +3,12 @@
  * Author: Michelle Jiang 
  * Class that implements a decision tree. 
  */
+
+import java.io.PrintWriter;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.io.File;
+import java.io.FileWriter;
 public class DecisionTree extends BinaryTree<String> { 
 
     /**
@@ -41,6 +47,13 @@ public class DecisionTree extends BinaryTree<String> {
             }
         }
         return current;
+    }
+
+    public static void writeFile(String filename) {
+        File animalTree = new File(filename);
+        Queue<DecisionTree> nodes = new LinkedList<>(); 
+        Queue<String> paths = new LinkedList<>(); 
+        PrintWriter out = new PrintWriter(new FileWriter(animalTree));
     }
 
     /** 

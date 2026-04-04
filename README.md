@@ -4,7 +4,7 @@ Each student should complete this README individually, even when pair programmin
 
 ## Basic Information
 
-Your name:
+Your name: Michelle Jiang
 
 Programming partner name, if any:
 
@@ -19,6 +19,8 @@ Any references or resources used besides JavaDoc and course materials:
 https://stackoverflow.com/questions/196830/what-is-the-easiest-best-most-correct-way-to-iterate-through-the-characters-of-a
 
 https://www.w3schools.com/java/java_type_casting.asp
+
+https://www.w3schools.com/java/java_files_read.asp
 
 If you used generative AI, how did you use it? What role did it play in your learning?
 

@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 /** 
  * FileName: AnimalGuess.java
@@ -95,6 +97,50 @@ public class AnimalGuess {
             } else { 
                 System.out.println("Invalid input, please try again.");
             }
+        }
+    }
+
+    /**
+     * Reads a decision tree from a file and constructs the tree structure.
+     * The file should have lines in the format: "path value", where path is a sequence of 'Y' and 'N' characters
+     * indicating the path from the root to the node, and value is the data for that node.
+     * @param filename the name of the file to read from
+     * @param root the root of the decision tree to populate
+     */
+    public static void readFile(String filename, DecisionTree root) {
+        File animalTree = new File(filename);
+
+        try (Scanner myReader = new Scanner(animalTree)) {
+
+            while (myReader.hasNextLine()) {
+
+                String line = myReader.nextLine();
+
+                int spaceIndex = line.indexOf(" ");
+                String path = line.substring(0, spaceIndex);
+                String value = line.substring(spaceIndex + 1);
+
+                // ROOT NODE (empty path)
+                if (path.isEmpty()) {
+                    root.setData(value);
+                    continue;
+                }
+
+                // Split into parent + direction
+                String parentPath = path.substring(0, path.length() - 1);
+                char direction = path.charAt(path.length() - 1);
+
+                DecisionTree parent = root.followPath(parentPath);
+
+                if (direction == 'Y') {
+                    parent.setLeft(new DecisionTree(value));
+                } else if (direction == 'N') {
+                    parent.setRight(new DecisionTree(value));
+                }
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found.");
         }
     }
 
