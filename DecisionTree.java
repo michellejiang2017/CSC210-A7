@@ -15,18 +15,18 @@ public class DecisionTree extends BinaryTree<String> {
 
     /**
      * Constructor for branch node
-     * @param data
-     * @param left
-     * @param right
+     * @param data string to pass with data
+     * @param left the left subtree
+     * @param right the right subtree
      */
     public DecisionTree(String data, DecisionTree left, DecisionTree right) { 
         super(data, left, right);
     }
 
     /**
-     * 
-     * @param data
-     * @return
+     * Follows a path through the decision tree based on a string of 'Y' and 'N' characters, where 'Y' indicates taking the left branch and 'N' indicates taking the right branch.
+     * @param data the string of 'Y' and 'N' characters representing the path to follow
+     * @return the node reached by following the path, or null if the path is invalid
      */
     public DecisionTree followPath(String data) { 
         DecisionTree current = this; 
@@ -43,6 +43,10 @@ public class DecisionTree extends BinaryTree<String> {
         return current;
     }
 
+    /** 
+     * Main method for testing the DecisionTree class.
+     * @param args command-line arguments (not used)
+     */
     public static void main(String[] args) {
 
     // Leaves (animals)
