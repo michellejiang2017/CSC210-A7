@@ -1,13 +1,13 @@
+import java.io.PrintWriter;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.io.FileWriter;
+
 /** 
  * FileName: DecisionTree.java 
  * Author: Michelle Jiang 
  * Class that implements a decision tree. 
  */
-
-import java.io.PrintWriter;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.io.FileWriter;
 public class DecisionTree extends BinaryTree<String> { 
 
     /**
@@ -63,9 +63,8 @@ public class DecisionTree extends BinaryTree<String> {
                 DecisionTree current = nodes.remove(); 
                 String path = paths.remove(); 
 
-                if (current.isLeaf()) {
-                    out.println(path + " " + current.getData());
-                }
+                out.println(path + " " + current.getData());
+
                 if (current.getLeft() != null) { 
                     nodes.add((DecisionTree) current.getLeft()); 
                     paths.add(path + "Y");
