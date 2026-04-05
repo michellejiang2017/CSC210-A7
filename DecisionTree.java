@@ -7,7 +7,6 @@
 import java.io.PrintWriter;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.io.File;
 import java.io.FileWriter;
 public class DecisionTree extends BinaryTree<String> { 
 
@@ -49,11 +48,37 @@ public class DecisionTree extends BinaryTree<String> {
         return current;
     }
 
-    public static void writeFile(String filename) {
-        File animalTree = new File(filename);
-        Queue<DecisionTree> nodes = new LinkedList<>(); 
-        Queue<String> paths = new LinkedList<>(); 
-        PrintWriter out = new PrintWriter(new FileWriter(animalTree));
+    /** 
+     * Writes the decision tree to a file in a specific format.
+     * @param filename the name of the file to write to
+     */
+    public void writeFile(String filename) {
+        try { 
+            Queue<DecisionTree> nodes = new LinkedList<>(); 
+            Queue<String> paths = new LinkedList<>(); 
+            PrintWriter out = new PrintWriter(new FileWriter(filename));
+            nodes.add(this);
+            paths.add("");
+            while (!nodes.isEmpty()) { 
+                DecisionTree current = nodes.remove(); 
+                String path = paths.remove(); 
+
+                if (current.isLeaf()) {
+                    out.println(path + " " + current.getData());
+                }
+                if (current.getLeft() != null) { 
+                    nodes.add((DecisionTree) current.getLeft()); 
+                    paths.add(path + "Y");
+                }
+                if (current.getRight() != null) { 
+                    nodes.add((DecisionTree) current.getRight());
+                    paths.add(path + "N");
+                }
+            }
+            out.close(); 
+        } catch (Exception e) { 
+            System.out.println("Error writing file.");
+        }
     }
 
     /** 

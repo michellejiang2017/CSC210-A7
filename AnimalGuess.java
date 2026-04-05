@@ -150,8 +150,15 @@ public class AnimalGuess {
      */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        String filename = "AnimalTree.txt";
         
-        DecisionTree root = defaultTree(); 
+        DecisionTree root = new DecisionTree(""); // temporary root
+
+        if (filename != null) {
+            readFile(filename, root);
+        } else {
+            root = defaultTree();
+        }
 
         // Main loop
         boolean running = true;  
@@ -215,7 +222,10 @@ public class AnimalGuess {
             } else {
                 System.out.println("Great! Let's play again!");
             }
+        }
         scanner.close(); 
+        if (filename != null) {
+            root.writeFile(filename);
         }
     }
 }
